@@ -1,0 +1,29 @@
+introspection: http://school.localhost/graphql?introspection=true
+
+servers:
+  - url: http://school.localhost/graphql
+    description: Development
+  - url: https://my-school-name.pflms.com
+    description: Production
+
+info:
+    title: Pupilfirst LMS
+    description: This is the documentation for GraphQL queries and mutations that are currently
+      available to third-parties.
+
+domains:
+  - name: Publicly Accessible
+    description: These are queries and mutations that are currently accessible by third-parties.
+    usecases:
+     - name: Fetch Courses
+       description: Fetch all courses in the school.
+       query: query.courses
+     - name: Fetch Student Submissions
+       description: Loads student submissions for _reviewed_ targets from a course. This is a paginated query.
+       query: query.submissions
+     - name: Create Students
+       description: Enroll students onto a course.
+       query: mutation.createStudents
+     - name: Grade a Submission
+       description: This creates a grading for a student submission.
+       query: mutation.createGrading

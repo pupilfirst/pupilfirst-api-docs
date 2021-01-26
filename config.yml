@@ -9,11 +9,11 @@ servers:
 info:
     title: Pupilfirst LMS
     description: This is the documentation for GraphQL queries and mutations that are currently
-      available to third-parties.
+      available to clients that authenticate using an API token.
 
 domains:
-  - name: Publicly Accessible
-    description: These are queries and mutations that are currently accessible by third-parties.
+  - name: Token Authenticated
+    description: These are queries and mutations that are currently accessible using token auth.
     usecases:
      - name: Fetch Courses
        description: Fetch all courses in the school.

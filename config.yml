@@ -2,9 +2,7 @@ introspection: http://school.localhost/graphql?introspection=true
 
 servers:
   - url: http://school.localhost/graphql
-    description: Development
-  - url: https://my-school-name.pflms.com
-    description: Production
+    description: Development Environment
 
 info:
     title: Pupilfirst LMS

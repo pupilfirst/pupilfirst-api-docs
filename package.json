@@ -11,6 +11,6 @@
     "dociql": "^1.1.3"
   },
   "scripts": {
-    "build": "dociql config.yml"
+    "build": "dociql -t docs -l logo.svg config.yml"
   }
 }

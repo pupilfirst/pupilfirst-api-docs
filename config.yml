@@ -5,23 +5,39 @@ servers:
     description: Development Environment
 
 info:
-    title: Pupilfirst LMS
-    description: This is the documentation for GraphQL queries and mutations that are currently
-      available to clients that authenticate using an API token.
+  title: Pupilfirst LMS
+  description:
+    This is the documentation for GraphQL queries and mutations that are currently
+    available to clients that authenticate using an API token.
 
 domains:
   - name: Token Authenticated
     description: These are queries and mutations that are currently accessible using token auth.
     usecases:
-     - name: Fetch Courses
-       description: Fetch all courses in the school.
-       query: query.courses
-     - name: Fetch Student Submissions
-       description: Loads student submissions for _reviewed_ targets from a course. This is a paginated query.
-       query: query.submissions
-     - name: Create Students
-       description: Enroll students onto a course.
-       query: mutation.createStudents
-     - name: Grade a Submission
-       description: This creates a grading for a student submission.
-       query: mutation.createGrading
+      - name: Fetch Courses
+        description: Fetch all courses in the school.
+        query: query.courses
+      - name: Fetch Student Submissions
+        description: Loads student submissions for _reviewed_ targets from a course. This is a paginated query.
+        query: query.submissions
+      - name: Create Students
+        description: Enroll students onto a course.
+        query: mutation.createStudents
+      - name: Load Applicant
+        description: Load basic details of an applicant.
+        query: query.applicant
+      - name: Convert Applicant to Student
+        description: Accept an existing applicant as a student in a course.
+        query: mutation.createStudentFromApplicant
+      - name: Grade a Submission
+        description: This creates a grading for a student submission.
+        query: mutation.createGrading
+      - name: Queue Submission Report
+        description: Create a submission report and then display it as queued for processing.
+        query: mutation.queueSubmissionReport
+      - name: Process Submission Report
+        description: Mark a submission report as being processed.
+        query: mutation.beginProcessingSubmissionReport
+      - name: Conclude Submission Report
+        description: Submit a report for a submission and conclude it.
+        query: mutation.concludeSubmissionReport

@@ -216,6 +216,7 @@
           <a href="#definition-QrCorner"> QrCorner </a>
           <a href="#definition-QueueSubmissionReportPayload"> QueueSubmissionReportPayload </a>
           <a href="#definition-ReActivateStudentPayload"> ReActivateStudentPayload </a>
+          <a href="#definition-ReRunGithubActionPayload"> ReRunGithubActionPayload </a>
           <a href="#definition-ReassignReviewerPayload"> ReassignReviewerPayload </a>
           <a href="#definition-ResolveEmbedCodePayload"> ResolveEmbedCodePayload </a>
           <a href="#definition-ReviewChecklist"> ReviewChecklist </a>
@@ -246,7 +247,6 @@
           <a href="#definition-SubmissionInfoConnection"> SubmissionInfoConnection </a>
           <a href="#definition-SubmissionInfoEdge"> SubmissionInfoEdge </a>
           <a href="#definition-SubmissionReport"> SubmissionReport </a>
-          <a href="#definition-SubmissionReportConclusion"> SubmissionReportConclusion </a>
           <a href="#definition-SubmissionReportStatus"> SubmissionReportStatus </a>
           <a href="#definition-SubmissionReviewStatus"> SubmissionReviewStatus </a>
           <a href="#definition-SubmissionSortCriterion"> SubmissionSortCriterion </a>
@@ -1575,7 +1575,46 @@ http://school.localhost/graphql
                   </div>
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">testReport:
+                      <div class="prop-title">report:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">reporter:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">heading:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">targetUrl:
                         <span class="prop-type">
                           <div class="json-property-type">string</div>
                           <span class="json-property-range" title="Value limits"></span>
@@ -1598,8 +1637,8 @@ http://school.localhost/graphql
                     <!-- <div class="hljs"> -->
                     <html>
                     <head></head>
-                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> queueSubmissionReport<span class="hljs-tag">(<span class="hljs-code">$submissionId</span>: ID!, <span class="hljs-code">$testReport</span>:<span class="hljs-type"> String)</span>{
-  queueSubmissionReport(submissionId: <span class="hljs-code">$submissionId</span>, testReport: <span class="hljs-code">$testReport</span>)</span><span class="hljs-tag">{
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> queueSubmissionReport<span class="hljs-tag">(<span class="hljs-code">$submissionId</span>: ID!, <span class="hljs-code">$report</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$reporter</span>:<span class="hljs-type"> String!</span>, <span class="hljs-code">$heading</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$targetUrl</span>:<span class="hljs-type"> String)</span>{
+  queueSubmissionReport(submissionId: <span class="hljs-code">$submissionId</span>, report: <span class="hljs-code">$report</span>, reporter: <span class="hljs-code">$reporter</span>, heading: <span class="hljs-code">$heading</span>, targetUrl: <span class="hljs-code">$targetUrl</span>)</span><span class="hljs-tag">{
     <span class="hljs-symbol">success</span>
   }</span></span>
 }
@@ -1612,12 +1651,15 @@ http://school.localhost/graphql
                     <head></head>
                     <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;submissionId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;testReport&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+  <span class="hljs-attr">&quot;report&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;reporter&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;heading&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;targetUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
 }
 </code></pre> </body>
                     </html>
                     <!-- </div> -->
-                    <a href="http://school.localhost/graphql?query=mutation%20queueSubmissionReport(%24submissionId%3A%20ID!%2C%20%24testReport%3A%20String)%7B%0A%20%20queueSubmissionReport(submissionId%3A%20%24submissionId%2C%20testReport%3A%20%24testReport)%7B%0A%20%20%20%20success%0A%20%20%7D%0A%7D" target="_blank">Try it now</a>
+                    <a href="http://school.localhost/graphql?query=mutation%20queueSubmissionReport(%24submissionId%3A%20ID!%2C%20%24report%3A%20String%2C%20%24reporter%3A%20String!%2C%20%24heading%3A%20String%2C%20%24targetUrl%3A%20String)%7B%0A%20%20queueSubmissionReport(submissionId%3A%20%24submissionId%2C%20report%3A%20%24report%2C%20reporter%3A%20%24reporter%2C%20heading%3A%20%24heading%2C%20targetUrl%3A%20%24targetUrl)%7B%0A%20%20%20%20success%0A%20%20%7D%0A%7D" target="_blank">Try it now</a>
                 </section>
               </div>
             </div>
@@ -1709,7 +1751,46 @@ http://school.localhost/graphql
                   </div>
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">testReport:
+                      <div class="prop-title">report:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">reporter:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">heading:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">targetUrl:
                         <span class="prop-type">
                           <div class="json-property-type">string</div>
                           <span class="json-property-range" title="Value limits"></span>
@@ -1732,8 +1813,8 @@ http://school.localhost/graphql
                     <!-- <div class="hljs"> -->
                     <html>
                     <head></head>
-                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> beginProcessingSubmissionReport<span class="hljs-tag">(<span class="hljs-code">$submissionId</span>: ID!, <span class="hljs-code">$testReport</span>:<span class="hljs-type"> String)</span>{
-  beginProcessingSubmissionReport(submissionId: <span class="hljs-code">$submissionId</span>, testReport: <span class="hljs-code">$testReport</span>)</span><span class="hljs-tag">{
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> beginProcessingSubmissionReport<span class="hljs-tag">(<span class="hljs-code">$submissionId</span>: ID!, <span class="hljs-code">$report</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$reporter</span>:<span class="hljs-type"> String!</span>, <span class="hljs-code">$heading</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$targetUrl</span>:<span class="hljs-type"> String)</span>{
+  beginProcessingSubmissionReport(submissionId: <span class="hljs-code">$submissionId</span>, report: <span class="hljs-code">$report</span>, reporter: <span class="hljs-code">$reporter</span>, heading: <span class="hljs-code">$heading</span>, targetUrl: <span class="hljs-code">$targetUrl</span>)</span><span class="hljs-tag">{
     <span class="hljs-symbol">success</span>
   }</span></span>
 }
@@ -1746,12 +1827,15 @@ http://school.localhost/graphql
                     <head></head>
                     <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;submissionId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;testReport&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+  <span class="hljs-attr">&quot;report&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;reporter&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;heading&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;targetUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
 }
 </code></pre> </body>
                     </html>
                     <!-- </div> -->
-                    <a href="http://school.localhost/graphql?query=mutation%20beginProcessingSubmissionReport(%24submissionId%3A%20ID!%2C%20%24testReport%3A%20String)%7B%0A%20%20beginProcessingSubmissionReport(submissionId%3A%20%24submissionId%2C%20testReport%3A%20%24testReport)%7B%0A%20%20%20%20success%0A%20%20%7D%0A%7D" target="_blank">Try it now</a>
+                    <a href="http://school.localhost/graphql?query=mutation%20beginProcessingSubmissionReport(%24submissionId%3A%20ID!%2C%20%24report%3A%20String%2C%20%24reporter%3A%20String!%2C%20%24heading%3A%20String%2C%20%24targetUrl%3A%20String)%7B%0A%20%20beginProcessingSubmissionReport(submissionId%3A%20%24submissionId%2C%20report%3A%20%24report%2C%20reporter%3A%20%24reporter%2C%20heading%3A%20%24heading%2C%20targetUrl%3A%20%24targetUrl)%7B%0A%20%20%20%20success%0A%20%20%7D%0A%7D" target="_blank">Try it now</a>
                 </section>
               </div>
             </div>
@@ -1843,7 +1927,7 @@ http://school.localhost/graphql
                   </div>
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">testReport:
+                      <div class="prop-title">report:
                         <span class="prop-type">
                           <div class="json-property-type">string</div>
                           <span class="json-property-range" title="Value limits"></span>
@@ -1856,13 +1940,52 @@ http://school.localhost/graphql
                   </div>
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">conclusion:
+                      <div class="prop-title">status:
                         <span class="prop-type">
                           <div class="json-property-type">
                             <div class="">
-                              <a class="json-schema-ref" href="#/definitions/SubmissionReportConclusion">SubmissionReportConclusion</a>
+                              <a class="json-schema-ref" href="#/definitions/SubmissionReportStatus">SubmissionReportStatus</a>
                             </div>
                           </div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">reporter:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">heading:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">targetUrl:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
                           <span class="json-property-range" title="Value limits"></span>
                         </span>
                       </div>
@@ -1883,11 +2006,11 @@ http://school.localhost/graphql
                     <!-- <div class="hljs"> -->
                     <html>
                     <head></head>
-                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> concludeSubmissionReport<span class="hljs-tag">(<span class="hljs-code">$submissionId</span>: ID!, <span class="hljs-code">$testReport</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$conclusion</span>:<span class="hljs-type"> SubmissionReportConclusion!</span>)</span><span class="hljs-tag">{
-  <span class="hljs-symbol">concludeSubmissionReport<span class="hljs-tag">(submissionId: <span class="hljs-code">$submissionId</span>, testReport: <span class="hljs-code">$testReport</span>, conclusion: <span class="hljs-code">$conclusion</span>)</span><span class="hljs-tag">{
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> concludeSubmissionReport<span class="hljs-tag">(<span class="hljs-code">$submissionId</span>: ID!, <span class="hljs-code">$report</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$status</span>:<span class="hljs-type"> SubmissionReportStatus!</span>, <span class="hljs-code">$reporter</span>:<span class="hljs-type"> String!</span>, <span class="hljs-code">$heading</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$targetUrl</span>:<span class="hljs-type"> String)</span>{
+  concludeSubmissionReport(submissionId: <span class="hljs-code">$submissionId</span>, report: <span class="hljs-code">$report</span>, status: <span class="hljs-code">$status</span>, reporter: <span class="hljs-code">$reporter</span>, heading: <span class="hljs-code">$heading</span>, targetUrl: <span class="hljs-code">$targetUrl</span>)</span><span class="hljs-tag">{
     <span class="hljs-symbol">success</span>
   }</span></span>
-}</span></span>
+}
 </code></pre> </body>
                     </html>
                     <!-- </div> -->
@@ -1897,13 +2020,16 @@ http://school.localhost/graphql
                     <head></head>
                     <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;submissionId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;testReport&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;conclusion&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+  <span class="hljs-attr">&quot;report&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;reporter&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;heading&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;targetUrl&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
 }
 </code></pre> </body>
                     </html>
                     <!-- </div> -->
-                    <a href="http://school.localhost/graphql?query=mutation%20concludeSubmissionReport(%24submissionId%3A%20ID!%2C%20%24testReport%3A%20String%2C%20%24conclusion%3A%20SubmissionReportConclusion!)%7B%0A%20%20concludeSubmissionReport(submissionId%3A%20%24submissionId%2C%20testReport%3A%20%24testReport%2C%20conclusion%3A%20%24conclusion)%7B%0A%20%20%20%20success%0A%20%20%7D%0A%7D" target="_blank">Try it now</a>
+                    <a href="http://school.localhost/graphql?query=mutation%20concludeSubmissionReport(%24submissionId%3A%20ID!%2C%20%24report%3A%20String%2C%20%24status%3A%20SubmissionReportStatus!%2C%20%24reporter%3A%20String!%2C%20%24heading%3A%20String%2C%20%24targetUrl%3A%20String)%7B%0A%20%20concludeSubmissionReport(submissionId%3A%20%24submissionId%2C%20report%3A%20%24report%2C%20status%3A%20%24status%2C%20reporter%3A%20%24reporter%2C%20heading%3A%20%24heading%2C%20targetUrl%3A%20%24targetUrl)%7B%0A%20%20%20%20success%0A%20%20%7D%0A%7D" target="_blank">Try it now</a>
                 </section>
               </div>
             </div>
@@ -2574,7 +2700,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of ArchiveCoachNote</p>
+                  <p>Autogenerated return type of ArchiveCoachNote.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -2643,7 +2769,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of ArchiveCourse</p>
+                  <p>Autogenerated return type of ArchiveCourse.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -2712,7 +2838,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of ArchivePost</p>
+                  <p>Autogenerated return type of ArchivePost.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -2781,7 +2907,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of AssignReviewer</p>
+                  <p>Autogenerated return type of AssignReviewer.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -3011,7 +3137,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of AutoVerifySubmission</p>
+                  <p>Autogenerated return type of AutoVerifySubmission.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -3211,7 +3337,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of BeginProcessingSubmissionReport</p>
+                  <p>Autogenerated return type of BeginProcessingSubmissionReport.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -3795,7 +3921,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CloneCourse</p>
+                  <p>Autogenerated return type of CloneCourse.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -3864,7 +3990,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CloneLevel</p>
+                  <p>Autogenerated return type of CloneLevel.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -5520,7 +5646,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of ConcludeSubmissionReport</p>
+                  <p>Autogenerated return type of ConcludeSubmissionReport.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -7154,6 +7280,37 @@ http://school.localhost/graphql
               <div class="doc-copy">
                 <section class="json-schema-properties">
                   <dl>
+                    <dt data-property-name="cohorts">
+                      <span class="json-property-name">cohorts:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="json-schema-ref-array">
+                                <a class="json-schema-ref" href="#/definitions/Cohort">Cohort</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
                     <dt data-property-name="createdAt">
                       <span class="json-property-name">createdAt:</span>
                       <div class="json-property-type">object</div>
@@ -7350,31 +7507,120 @@ http://school.localhost/graphql
                   <html>
                   <head></head>
                   <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">&quot;createdAt&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
-  <span class="hljs-attr">&quot;exportType&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
-  <span class="hljs-attr">&quot;id&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
-  <span class="hljs-attr">&quot;includeInactiveStudents&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
-  <span class="hljs-attr">&quot;reviewedOnly&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
-  <span class="hljs-attr">&quot;tags&quot;</span>: {
+  <span class="hljs-attr">&quot;cohorts&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: [
-      <span class="hljs-string">&quot;string&quot;</span>
-    ],
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+      {
+        <span class="hljs-attr">&quot;coachesCount&quot;</span>: {
+          <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+          <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+        },
+        <span class="hljs-attr">&quot;course&quot;</span>: {
+          <span class="hljs-attr">&quot;return&quot;</span>: {
+            <span class="hljs-attr">&quot;about&quot;</span>: {
+              <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+              <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+            },
+            <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
+              <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+              <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+            },
+            <span class="hljs-attr">&quot;certificates&quot;</span>: {
+              <span class="hljs-attr">&quot;return&quot;</span>: [
+                {
+                  <span class="hljs-attr">&quot;active&quot;</span>: {
+                    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+                    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                  },
+                  <span class="hljs-attr">&quot;course&quot;</span>: {
+                    <span class="hljs-attr">&quot;return&quot;</span>: {
+                      <span class="hljs-attr">&quot;about&quot;</span>: {
+                        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                      },
+                      <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
+                        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                      },
+                      <span class="hljs-attr">&quot;certificates&quot;</span>: {
+                        <span class="hljs-attr">&quot;return&quot;</span>: [
+                          {
+                            <span class="hljs-attr">&quot;active&quot;</span>: {
+                              <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+                              <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                            },
+                            <span class="hljs-attr">&quot;course&quot;</span>: {
+                              <span class="hljs-attr">&quot;return&quot;</span>: {
+                                <span class="hljs-attr">&quot;about&quot;</span>: {
+                                  <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                                  <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                },
+                                <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
+                                  <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                                  <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                },
+                                <span class="hljs-attr">&quot;certificates&quot;</span>: {
+                                  <span class="hljs-attr">&quot;return&quot;</span>: [
+                                    {
+                                      <span class="hljs-attr">&quot;active&quot;</span>: {
+                                        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+                                        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                      },
+                                      <span class="hljs-attr">&quot;course&quot;</span>: {
+                                        <span class="hljs-attr">&quot;return&quot;</span>: {
+                                          <span class="hljs-attr">&quot;about&quot;</span>: {
+                                            <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                                            <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                          },
+                                          <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
+                                            <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                                            <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                          },
+                                          <span class="hljs-attr">&quot;certificates&quot;</span>: {
+                                            <span class="hljs-attr">&quot;return&quot;</span>: [
+                                              {
+                                                <span class="hljs-attr">&quot;active&quot;</span>: {
+                                                  <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+                                                  <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                                },
+                                                <span class="hljs-attr">&quot;course&quot;</span>: {
+                                                  <span class="hljs-attr">&quot;return&quot;</span>: {
+                                                    <span class="hljs-attr">&quot;about&quot;</span>: {
+                                                      <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                                                      <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                                    },
+                                                    <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
+                                                      <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                                                      <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                                    },
+                                                    <span class="hljs-attr">&quot;certificates&quot;</span>: {
+                                                      <span class="hljs-attr">&quot;return&quot;</span>: [
+                                                        {}
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
   }
 }
 </code></pre> </body>
@@ -7831,7 +8077,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateCoachNote</p>
+                  <p>Autogenerated return type of CreateCoachNote.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -7959,7 +8205,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateCohort</p>
+                  <p>Autogenerated return type of CreateCohort.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -8138,7 +8384,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateCommunity</p>
+                  <p>Autogenerated return type of CreateCommunity.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -8206,7 +8452,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateCourseAuthor</p>
+                  <p>Autogenerated return type of CreateCourseAuthor.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -8299,7 +8545,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateCourseExport</p>
+                  <p>Autogenerated return type of CreateCourseExport.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -8345,34 +8591,118 @@ http://school.localhost/graphql
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;courseExport&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: {
-      <span class="hljs-attr">&quot;createdAt&quot;</span>: {
-        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
-        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-      },
-      <span class="hljs-attr">&quot;exportType&quot;</span>: {
-        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-      },
-      <span class="hljs-attr">&quot;id&quot;</span>: {
-        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
-        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-      },
-      <span class="hljs-attr">&quot;includeInactiveStudents&quot;</span>: {
-        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-      },
-      <span class="hljs-attr">&quot;reviewedOnly&quot;</span>: {
-        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-      },
-      <span class="hljs-attr">&quot;tags&quot;</span>: {
+      <span class="hljs-attr">&quot;cohorts&quot;</span>: {
         <span class="hljs-attr">&quot;return&quot;</span>: [
-          <span class="hljs-string">&quot;string&quot;</span>
-        ],
-        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+          {
+            <span class="hljs-attr">&quot;coachesCount&quot;</span>: {
+              <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+              <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+            },
+            <span class="hljs-attr">&quot;course&quot;</span>: {
+              <span class="hljs-attr">&quot;return&quot;</span>: {
+                <span class="hljs-attr">&quot;about&quot;</span>: {
+                  <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                  <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                },
+                <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
+                  <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                  <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                },
+                <span class="hljs-attr">&quot;certificates&quot;</span>: {
+                  <span class="hljs-attr">&quot;return&quot;</span>: [
+                    {
+                      <span class="hljs-attr">&quot;active&quot;</span>: {
+                        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+                        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                      },
+                      <span class="hljs-attr">&quot;course&quot;</span>: {
+                        <span class="hljs-attr">&quot;return&quot;</span>: {
+                          <span class="hljs-attr">&quot;about&quot;</span>: {
+                            <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                            <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                          },
+                          <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
+                            <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                            <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                          },
+                          <span class="hljs-attr">&quot;certificates&quot;</span>: {
+                            <span class="hljs-attr">&quot;return&quot;</span>: [
+                              {
+                                <span class="hljs-attr">&quot;active&quot;</span>: {
+                                  <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+                                  <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                },
+                                <span class="hljs-attr">&quot;course&quot;</span>: {
+                                  <span class="hljs-attr">&quot;return&quot;</span>: {
+                                    <span class="hljs-attr">&quot;about&quot;</span>: {
+                                      <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                                      <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                    },
+                                    <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
+                                      <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                                      <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                    },
+                                    <span class="hljs-attr">&quot;certificates&quot;</span>: {
+                                      <span class="hljs-attr">&quot;return&quot;</span>: [
+                                        {
+                                          <span class="hljs-attr">&quot;active&quot;</span>: {
+                                            <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+                                            <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                          },
+                                          <span class="hljs-attr">&quot;course&quot;</span>: {
+                                            <span class="hljs-attr">&quot;return&quot;</span>: {
+                                              <span class="hljs-attr">&quot;about&quot;</span>: {
+                                                <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                                                <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                              },
+                                              <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
+                                                <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                                                <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                              },
+                                              <span class="hljs-attr">&quot;certificates&quot;</span>: {
+                                                <span class="hljs-attr">&quot;return&quot;</span>: [
+                                                  {
+                                                    <span class="hljs-attr">&quot;active&quot;</span>: {
+                                                      <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+                                                      <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                                    },
+                                                    <span class="hljs-attr">&quot;course&quot;</span>: {
+                                                      <span class="hljs-attr">&quot;return&quot;</span>: {
+                                                        <span class="hljs-attr">&quot;about&quot;</span>: {
+                                                          <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+                                                          <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                                        },
+                                                        <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
+                                                          <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+                                                          <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+                                                        },
+                                                        <span class="hljs-attr">&quot;certificates&quot;</span>: {}
+                                                      }
+                                                    }
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
       }
-    },
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+    }
   }
 }
 </code></pre> </body>
@@ -8394,7 +8724,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateCourse</p>
+                  <p>Autogenerated return type of CreateCourse.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -8573,7 +8903,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateEmbedContentBlock</p>
+                  <p>Autogenerated return type of CreateEmbedContentBlock.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -8657,7 +8987,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateEvaluationCriterion</p>
+                  <p>Autogenerated return type of CreateEvaluationCriterion.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -8757,7 +9087,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateFeedback</p>
+                  <p>Autogenerated return type of CreateFeedback.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -8826,7 +9156,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateGrading</p>
+                  <p>Autogenerated return type of CreateGrading.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -8895,7 +9225,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateMarkdownContentBlock</p>
+                  <p>Autogenerated return type of CreateMarkdownContentBlock.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -8979,7 +9309,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreatePostLike</p>
+                  <p>Autogenerated return type of CreatePostLike.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -9048,7 +9378,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreatePost</p>
+                  <p>Autogenerated return type of CreatePost.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -9116,7 +9446,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateQuizSubmission</p>
+                  <p>Autogenerated return type of CreateQuizSubmission.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -9316,7 +9646,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateSchoolAdmin</p>
+                  <p>Autogenerated return type of CreateSchoolAdmin.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -9409,7 +9739,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateSchoolLink</p>
+                  <p>Autogenerated return type of CreateSchoolLink.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -9498,7 +9828,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateStudentFromApplicant</p>
+                  <p>Autogenerated return type of CreateStudentFromApplicant.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -9567,7 +9897,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateStudents</p>
+                  <p>Autogenerated return type of CreateStudents.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -9637,7 +9967,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateSubmission</p>
+                  <p>Autogenerated return type of CreateSubmission.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -9973,7 +10303,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateTarget</p>
+                  <p>Autogenerated return type of CreateTarget.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -10054,7 +10384,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateTargetVersion</p>
+                  <p>Autogenerated return type of CreateTargetVersion.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -10123,7 +10453,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateTeam</p>
+                  <p>Autogenerated return type of CreateTeam.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -10304,7 +10634,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateTopicCategory</p>
+                  <p>Autogenerated return type of CreateTopicCategory.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -10372,7 +10702,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateTopic</p>
+                  <p>Autogenerated return type of CreateTopic.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -10440,7 +10770,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateTopicSubscription</p>
+                  <p>Autogenerated return type of CreateTopicSubscription.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -10509,7 +10839,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateVimeoVideo</p>
+                  <p>Autogenerated return type of CreateVimeoVideo.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -10586,7 +10916,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of CreateWebPushSubscription</p>
+                  <p>Autogenerated return type of CreateWebPushSubscription.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -10655,7 +10985,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DeleteAccount</p>
+                  <p>Autogenerated return type of DeleteAccount.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -10724,7 +11054,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DeleteCertificate</p>
+                  <p>Autogenerated return type of DeleteCertificate.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -10793,7 +11123,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DeleteCoachStudentEnrollment</p>
+                  <p>Autogenerated return type of DeleteCoachStudentEnrollment.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -10862,7 +11192,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DeleteContentBlock</p>
+                  <p>Autogenerated return type of DeleteContentBlock.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -10931,7 +11261,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DeleteCourseAuthor</p>
+                  <p>Autogenerated return type of DeleteCourseAuthor.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -11000,7 +11330,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DeletePostLike</p>
+                  <p>Autogenerated return type of DeletePostLike.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -11069,7 +11399,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DeleteSchoolAdmin</p>
+                  <p>Autogenerated return type of DeleteSchoolAdmin.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -11138,7 +11468,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DeleteTopicCategory</p>
+                  <p>Autogenerated return type of DeleteTopicCategory.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -11207,7 +11537,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DeleteTopicSubscription</p>
+                  <p>Autogenerated return type of DeleteTopicSubscription.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -11276,7 +11606,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DeleteWebPushSubscription</p>
+                  <p>Autogenerated return type of DeleteWebPushSubscription.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -11345,7 +11675,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DestroySchoolLink</p>
+                  <p>Autogenerated return type of DestroySchoolLink.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -11414,7 +11744,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DestroyTeam</p>
+                  <p>Autogenerated return type of DestroyTeam.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -11689,7 +12019,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of DropoutStudent</p>
+                  <p>Autogenerated return type of DropoutStudent.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -13191,7 +13521,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of InitiateAccountDeletion</p>
+                  <p>Autogenerated return type of InitiateAccountDeletion.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -13289,7 +13619,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of IssueCertificate</p>
+                  <p>Autogenerated return type of IssueCertificate.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -14191,7 +14521,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of LevelUp</p>
+                  <p>Autogenerated return type of LevelUp.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -14260,7 +14590,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of LockTopic</p>
+                  <p>Autogenerated return type of LockTopic.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -14329,7 +14659,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of MarkAllNotifications</p>
+                  <p>Autogenerated return type of MarkAllNotifications.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -14398,7 +14728,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of MarkNotification</p>
+                  <p>Autogenerated return type of MarkNotification.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -14467,7 +14797,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of MarkPostAsSolution</p>
+                  <p>Autogenerated return type of MarkPostAsSolution.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -14602,7 +14932,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of MergeCohort</p>
+                  <p>Autogenerated return type of MergeCohort.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -14671,7 +15001,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of MergeLevels</p>
+                  <p>Autogenerated return type of MergeLevels.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -14740,7 +15070,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of MoveContentBlock</p>
+                  <p>Autogenerated return type of MoveContentBlock.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -14851,7 +15181,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of MoveSchoolLink</p>
+                  <p>Autogenerated return type of MoveSchoolLink.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -16127,7 +16457,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of QueueSubmissionReport</p>
+                  <p>Autogenerated return type of QueueSubmissionReport.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -16196,7 +16526,76 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of ReActivateStudent</p>
+                  <p>Autogenerated return type of ReActivateStudent.</p>
+                </section>
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="success">
+                      <span class="json-property-name">success:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/Boolean">Boolean</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;success&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-ReRunGithubActionPayload" class="definition panel" data-traverse-target="definition-ReRunGithubActionPayload">
+            <h2 class="panel-title">
+              <a name="/definitions/ReRunGithubActionPayload"></a>ReRunGithubActionPayload: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>Autogenerated return type of ReRunGithubAction.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -16265,7 +16664,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of ReassignReviewer</p>
+                  <p>Autogenerated return type of ReassignReviewer.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -16359,7 +16758,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of ResolveEmbedCode</p>
+                  <p>Autogenerated return type of ResolveEmbedCode.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -16866,7 +17265,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of RevokeIssuedCertificate</p>
+                  <p>Autogenerated return type of RevokeIssuedCertificate.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -17353,7 +17752,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of SendUpdateEmailToken</p>
+                  <p>Autogenerated return type of SendUpdateEmailToken.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -17422,7 +17821,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of SortCurriculumResources</p>
+                  <p>Autogenerated return type of SortCurriculumResources.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -17626,6 +18025,36 @@ http://school.localhost/graphql
                             <div class="json-property-type">
                               <div class="">
                                 <a class="json-schema-ref" href="#/definitions/ISO8601DateTime">ISO8601DateTime</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
+                    <dt data-property-name="githubRepository">
+                      <span class="json-property-name">githubRepository:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/String">String</a>
                               </div>
                             </div>
                             <span class="json-property-range" title="Value limits"></span>
@@ -20977,10 +21406,11 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
-                    <dt data-property-name="submissionReport">
-                      <span class="json-property-name">submissionReport:</span>
+                    <dt data-property-name="submissionReportPollTime">
+                      <span class="json-property-name">submissionReportPollTime:</span>
                       <div class="json-property-type">object</div>
                       <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
                     </dt>
                     <dt class="json-inner-schema">
                       <section class="json-schema-properties">
@@ -20989,7 +21419,7 @@ http://school.localhost/graphql
                             <span class="json-property-name">return:</span>
                             <div class="json-property-type">
                               <div class="">
-                                <a class="json-schema-ref" href="#/definitions/SubmissionReport">SubmissionReport</a>
+                                <a class="json-schema-ref" href="#/definitions/Int">Int</a>
                               </div>
                             </div>
                             <span class="json-property-range" title="Value limits"></span>
@@ -21007,8 +21437,8 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
-                    <dt data-property-name="submissionReportPollTime">
-                      <span class="json-property-name">submissionReportPollTime:</span>
+                    <dt data-property-name="submissionReports">
+                      <span class="json-property-name">submissionReports:</span>
                       <div class="json-property-type">object</div>
                       <span class="json-property-range" title="Value limits"></span>
                       <span class="json-property-required"></span>
@@ -21019,8 +21449,8 @@ http://school.localhost/graphql
                           <dt data-property-name="return">
                             <span class="json-property-name">return:</span>
                             <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/Int">Int</a>
+                              <div class="json-schema-ref-array">
+                                <a class="json-schema-ref" href="#/definitions/SubmissionReport">SubmissionReport</a>
                               </div>
                             </div>
                             <span class="json-property-range" title="Value limits"></span>
@@ -22556,8 +22986,8 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
-                    <dt data-property-name="conclusion">
-                      <span class="json-property-name">conclusion:</span>
+                    <dt data-property-name="heading">
+                      <span class="json-property-name">heading:</span>
                       <div class="json-property-type">object</div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
@@ -22568,7 +22998,7 @@ http://school.localhost/graphql
                             <span class="json-property-name">return:</span>
                             <div class="json-property-type">
                               <div class="">
-                                <a class="json-schema-ref" href="#/definitions/SubmissionReportConclusion">SubmissionReportConclusion</a>
+                                <a class="json-schema-ref" href="#/definitions/String">String</a>
                               </div>
                             </div>
                             <span class="json-property-range" title="Value limits"></span>
@@ -22648,6 +23078,67 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
+                    <dt data-property-name="report">
+                      <span class="json-property-name">report:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/String">String</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
+                    <dt data-property-name="reporter">
+                      <span class="json-property-name">reporter:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/String">String</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
                     <dt data-property-name="startedAt">
                       <span class="json-property-name">startedAt:</span>
                       <div class="json-property-type">object</div>
@@ -22709,8 +23200,8 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
-                    <dt data-property-name="testReport">
-                      <span class="json-property-name">testReport:</span>
+                    <dt data-property-name="targetUrl">
+                      <span class="json-property-name">targetUrl:</span>
                       <div class="json-property-type">object</div>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
@@ -22753,7 +23244,7 @@ http://school.localhost/graphql
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   },
-  <span class="hljs-attr">&quot;conclusion&quot;</span>: {
+  <span class="hljs-attr">&quot;heading&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   },
@@ -22765,6 +23256,14 @@ http://school.localhost/graphql
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   },
+  <span class="hljs-attr">&quot;report&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+  },
+  <span class="hljs-attr">&quot;reporter&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+  },
   <span class="hljs-attr">&quot;startedAt&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
@@ -22773,7 +23272,7 @@ http://school.localhost/graphql
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   },
-  <span class="hljs-attr">&quot;testReport&quot;</span>: {
+  <span class="hljs-attr">&quot;targetUrl&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   }
@@ -22785,9 +23284,9 @@ http://school.localhost/graphql
               </div>
             </div>
           </div>
-          <div id="definition-SubmissionReportConclusion" class="definition panel" data-traverse-target="definition-SubmissionReportConclusion">
+          <div id="definition-SubmissionReportStatus" class="definition panel" data-traverse-target="definition-SubmissionReportStatus">
             <h2 class="panel-title">
-              <a name="/definitions/SubmissionReportConclusion"></a>SubmissionReportConclusion: string
+              <a name="/definitions/SubmissionReportStatus"></a>SubmissionReportStatus: string
               <!-- <span class="json-property-type"><div class="json-property-type"></div>
               <span class="json-property-range" title="Value limits"></span>
               
@@ -22798,6 +23297,30 @@ http://school.localhost/graphql
               <div class="doc-copy">
                 <section class="json-schema-anyOf">
                   <dl>
+                    <dt>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">queued</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <section class="json-schema-description">
+                        <p>Checks are queued</p>
+                      </section>
+                    </dd>
+                    <dt>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">in_progress</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <section class="json-schema-description">
+                        <p>Checks in progress for the submission</p>
+                      </section>
+                    </dd>
                     <dt>
                       <div class="json-property-type">object</div>
                       <span class="json-property-enum" title="Possible values">
@@ -22832,60 +23355,6 @@ http://school.localhost/graphql
                     <dd>
                       <section class="json-schema-description">
                         <p>Checks successfully completed for the submission</p>
-                      </section>
-                    </dd>
-                  </dl>
-                </section>
-              </div>
-            </div>
-          </div>
-          <div id="definition-SubmissionReportStatus" class="definition panel" data-traverse-target="definition-SubmissionReportStatus">
-            <h2 class="panel-title">
-              <a name="/definitions/SubmissionReportStatus"></a>SubmissionReportStatus: string
-              <!-- <span class="json-property-type"><div class="json-property-type"></div>
-              <span class="json-property-range" title="Value limits"></span>
-              
-              
-              </span> -->
-            </h2>
-            <div class="doc-row">
-              <div class="doc-copy">
-                <section class="json-schema-anyOf">
-                  <dl>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">queued</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>Automated tests are queued</p>
-                      </section>
-                    </dd>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">in_progress</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>Checks in progress for the submission</p>
-                      </section>
-                    </dd>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">completed</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>Checks completed for the submission</p>
                       </section>
                     </dd>
                   </dl>
@@ -25985,7 +26454,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UnarchiveCourse</p>
+                  <p>Autogenerated return type of UnarchiveCourse.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -26054,7 +26523,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UnassignReviewer</p>
+                  <p>Autogenerated return type of UnassignReviewer.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -26123,7 +26592,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UndoGrading</p>
+                  <p>Autogenerated return type of UndoGrading.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -26192,7 +26661,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UndoSubmission</p>
+                  <p>Autogenerated return type of UndoSubmission.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -26261,7 +26730,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UnlockTopic</p>
+                  <p>Autogenerated return type of UnlockTopic.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -26330,7 +26799,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UnmarkPostAsSolution</p>
+                  <p>Autogenerated return type of UnmarkPostAsSolution.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -26399,7 +26868,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateCertificate</p>
+                  <p>Autogenerated return type of UpdateCertificate.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -26468,7 +26937,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateCohort</p>
+                  <p>Autogenerated return type of UpdateCohort.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -26701,7 +27170,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateCommunity</p>
+                  <p>Autogenerated return type of UpdateCommunity.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -26805,7 +27274,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateCourseAuthor</p>
+                  <p>Autogenerated return type of UpdateCourseAuthor.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -26874,7 +27343,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateCourse</p>
+                  <p>Autogenerated return type of UpdateCourse.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -27053,7 +27522,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateEvaluationCriterion</p>
+                  <p>Autogenerated return type of UpdateEvaluationCriterion.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -27153,7 +27622,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateFileContentBlock</p>
+                  <p>Autogenerated return type of UpdateFileContentBlock.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -27237,7 +27706,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateImageContentBlock</p>
+                  <p>Autogenerated return type of UpdateImageContentBlock.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -27321,7 +27790,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateMarkdownContentBlock</p>
+                  <p>Autogenerated return type of UpdateMarkdownContentBlock.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -27405,7 +27874,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdatePost</p>
+                  <p>Autogenerated return type of UpdatePost.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -27474,7 +27943,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateReviewChecklist</p>
+                  <p>Autogenerated return type of UpdateReviewChecklist.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -27543,7 +28012,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateSchoolAdmin</p>
+                  <p>Autogenerated return type of UpdateSchoolAdmin.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -27612,7 +28081,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateSchoolLink</p>
+                  <p>Autogenerated return type of UpdateSchoolLink.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -27681,7 +28150,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateSchool</p>
+                  <p>Autogenerated return type of UpdateSchool.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -27804,7 +28273,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateSchoolString</p>
+                  <p>Autogenerated return type of UpdateSchoolString.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -27875,7 +28344,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateStudentDetails</p>
+                  <p>Autogenerated return type of UpdateStudentDetails.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -27944,7 +28413,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateTarget</p>
+                  <p>Autogenerated return type of UpdateTarget.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -28012,7 +28481,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateTeam</p>
+                  <p>Autogenerated return type of UpdateTeam.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -28193,7 +28662,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateTopicCategory</p>
+                  <p>Autogenerated return type of UpdateTopicCategory.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -28262,7 +28731,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateTopic</p>
+                  <p>Autogenerated return type of UpdateTopic.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>
@@ -28331,7 +28800,7 @@ http://school.localhost/graphql
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="json-schema-description">
-                  <p>Autogenerated return type of UpdateUser</p>
+                  <p>Autogenerated return type of UpdateUser.</p>
                 </section>
                 <section class="json-schema-properties">
                   <dl>

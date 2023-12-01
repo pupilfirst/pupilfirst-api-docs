@@ -1,4 +1,4 @@
-introspection: http://school.localhost/graphql?introspection=true
+introspection: http://www.school.localhost/graphql?introspection=true
 
 servers:
   - url: http://school.localhost/graphql
@@ -32,6 +32,9 @@ domains:
       - name: Grade a Submission
         description: This creates a grading for a student submission.
         query: mutation.createGrading
+      - name: Submit Feedback for a Submission
+        description: This creates a feedback entry for a student submission.
+        query: mutation.createFeedback
       - name: Queue Submission Report
         description: Create a submission report and then display it as queued for processing.
         query: mutation.queueSubmissionReport

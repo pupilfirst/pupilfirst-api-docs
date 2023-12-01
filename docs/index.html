@@ -71,6 +71,14 @@
           <!-- </ul>
               </section> -->
           <!-- <section>
+                <a href="#path-submit_feedback_for_a_submission">submit_feedback_for_a_submission</a>
+                <ul> -->
+          <!-- <li> -->
+          <a href="#operation-submit_feedback_for_a_submission-post"> Submit Feedback for a Submission </a>
+          <!-- </li> -->
+          <!-- </ul>
+              </section> -->
+          <!-- <section>
                 <a href="#path-queue_submission_report">queue_submission_report</a>
                 <ul> -->
           <!-- <li> -->
@@ -170,7 +178,6 @@
           <a href="#definition-DeleteWebPushSubscriptionPayload"> DeleteWebPushSubscriptionPayload </a>
           <a href="#definition-DestroySchoolLinkPayload"> DestroySchoolLinkPayload </a>
           <a href="#definition-DestroyTeamPayload"> DestroyTeamPayload </a>
-          <a href="#definition-DistributionInLevel"> DistributionInLevel </a>
           <a href="#definition-DropoutStudentPayload"> DropoutStudentPayload </a>
           <a href="#definition-EmbedBlock"> EmbedBlock </a>
           <a href="#definition-EmbedRequestSource"> EmbedRequestSource </a>
@@ -189,13 +196,12 @@
           <a href="#definition-ImageBlock"> ImageBlock </a>
           <a href="#definition-ImageWidth"> ImageWidth </a>
           <a href="#definition-InitiateAccountDeletionPayload"> InitiateAccountDeletionPayload </a>
+          <a href="#definition-InitiatePasswordResetPayload"> InitiatePasswordResetPayload </a>
           <a href="#definition-Int"> Int </a>
           <a href="#definition-IssueCertificatePayload"> IssueCertificatePayload </a>
           <a href="#definition-IssuedCertificate"> IssuedCertificate </a>
           <a href="#definition-JSON"> JSON </a>
           <a href="#definition-Level"> Level </a>
-          <a href="#definition-LevelUpEligibility"> LevelUpEligibility </a>
-          <a href="#definition-LevelUpPayload"> LevelUpPayload </a>
           <a href="#definition-LockTopicPayload"> LockTopicPayload </a>
           <a href="#definition-MarkAllNotificationsPayload"> MarkAllNotificationsPayload </a>
           <a href="#definition-MarkNotificationPayload"> MarkNotificationPayload </a>
@@ -203,6 +209,7 @@
           <a href="#definition-MarkdownBlock"> MarkdownBlock </a>
           <a href="#definition-MergeCohortPayload"> MergeCohortPayload </a>
           <a href="#definition-MergeLevelsPayload"> MergeLevelsPayload </a>
+          <a href="#definition-MilestoneTargetsCompletionStatus"> MilestoneTargetsCompletionStatus </a>
           <a href="#definition-MoveContentBlockPayload"> MoveContentBlockPayload </a>
           <a href="#definition-MoveDirection"> MoveDirection </a>
           <a href="#definition-MoveSchoolLinkPayload"> MoveSchoolLinkPayload </a>
@@ -212,7 +219,6 @@
           <a href="#definition-NotificationEvent"> NotificationEvent </a>
           <a href="#definition-NotificationStatus"> NotificationStatus </a>
           <a href="#definition-PageInfo"> PageInfo </a>
-          <a href="#definition-ProgressionBehavior"> ProgressionBehavior </a>
           <a href="#definition-QrCorner"> QrCorner </a>
           <a href="#definition-QueueSubmissionReportPayload"> QueueSubmissionReportPayload </a>
           <a href="#definition-ReActivateStudentPayload"> ReActivateStudentPayload </a>
@@ -681,19 +687,6 @@ http://school.localhost/graphql
                   </div>
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">levelId:
-                        <span class="prop-type">
-                          <div class="json-property-type">string</div>
-                          <span class="json-property-range" title="Value limits"></span>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="prop-value">
-                      <p class="no-description">(no description)</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
                       <div class="prop-title">personalCoachId:
                         <span class="prop-type">
                           <div class="json-property-type">string</div>
@@ -759,19 +752,6 @@ http://school.localhost/graphql
                   </div>
                   <div class="prop-row prop-group">
                     <div class="prop-name">
-                      <div class="prop-title">excludeSubmissionId:
-                        <span class="prop-type">
-                          <div class="json-property-type">string</div>
-                          <span class="json-property-range" title="Value limits"></span>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="prop-value">
-                      <p class="no-description">(no description)</p>
-                    </div>
-                  </div>
-                  <div class="prop-row prop-group">
-                    <div class="prop-name">
                       <div class="prop-title">includeInactive:
                         <span class="prop-type">
                           <div class="json-property-type">boolean</div>
@@ -795,8 +775,8 @@ http://school.localhost/graphql
                     <!-- <div class="hljs"> -->
                     <html>
                     <head></head>
-                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> submissions<span class="hljs-tag">(<span class="hljs-code">$after</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$before</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$first</span>:<span class="hljs-type"> Int,</span> <span class="hljs-code">$last</span>:<span class="hljs-type"> Int,</span> <span class="hljs-code">$courseId</span>: ID!, <span class="hljs-code">$status</span>:<span class="hljs-type"> SubmissionStatus,</span> <span class="hljs-code">$sortDirection</span>:<span class="hljs-type"> SortDirection!</span>, <span class="hljs-code">$sortCriterion</span>:<span class="hljs-type"> SubmissionSortCriterion!</span>, <span class="hljs-code">$levelId</span>: ID, <span class="hljs-code">$personalCoachId</span>: ID, <span class="hljs-code">$assignedCoachId</span>: ID, <span class="hljs-code">$reviewingCoachId</span>: ID, <span class="hljs-code">$targetId</span>: ID, <span class="hljs-code">$search</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$excludeSubmissionId</span>: ID, <span class="hljs-code">$includeInactive</span>:<span class="hljs-type"> Boolean)</span>{
-  submissions(after: <span class="hljs-code">$after</span>, before: <span class="hljs-code">$before</span>, first: <span class="hljs-code">$first</span>, last: <span class="hljs-code">$last</span>, courseId: <span class="hljs-code">$courseId</span>, status: <span class="hljs-code">$status</span>, sortDirection: <span class="hljs-code">$sortDirection</span>, sortCriterion: <span class="hljs-code">$sortCriterion</span>, levelId: <span class="hljs-code">$levelId</span>, personalCoachId: <span class="hljs-code">$personalCoachId</span>, assignedCoachId: <span class="hljs-code">$assignedCoachId</span>, reviewingCoachId: <span class="hljs-code">$reviewingCoachId</span>, targetId: <span class="hljs-code">$targetId</span>, search: <span class="hljs-code">$search</span>, excludeSubmissionId: <span class="hljs-code">$excludeSubmissionId</span>, includeInactive: <span class="hljs-code">$includeInactive</span>)</span><span class="hljs-tag">{
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> submissions<span class="hljs-tag">(<span class="hljs-code">$after</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$before</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$first</span>:<span class="hljs-type"> Int,</span> <span class="hljs-code">$last</span>:<span class="hljs-type"> Int,</span> <span class="hljs-code">$courseId</span>: ID!, <span class="hljs-code">$status</span>:<span class="hljs-type"> SubmissionStatus,</span> <span class="hljs-code">$sortDirection</span>:<span class="hljs-type"> SortDirection!</span>, <span class="hljs-code">$sortCriterion</span>:<span class="hljs-type"> SubmissionSortCriterion!</span>, <span class="hljs-code">$personalCoachId</span>: ID, <span class="hljs-code">$assignedCoachId</span>: ID, <span class="hljs-code">$reviewingCoachId</span>: ID, <span class="hljs-code">$targetId</span>: ID, <span class="hljs-code">$search</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$includeInactive</span>:<span class="hljs-type"> Boolean)</span>{
+  submissions(after: <span class="hljs-code">$after</span>, before: <span class="hljs-code">$before</span>, first: <span class="hljs-code">$first</span>, last: <span class="hljs-code">$last</span>, courseId: <span class="hljs-code">$courseId</span>, status: <span class="hljs-code">$status</span>, sortDirection: <span class="hljs-code">$sortDirection</span>, sortCriterion: <span class="hljs-code">$sortCriterion</span>, personalCoachId: <span class="hljs-code">$personalCoachId</span>, assignedCoachId: <span class="hljs-code">$assignedCoachId</span>, reviewingCoachId: <span class="hljs-code">$reviewingCoachId</span>, targetId: <span class="hljs-code">$targetId</span>, search: <span class="hljs-code">$search</span>, includeInactive: <span class="hljs-code">$includeInactive</span>)</span><span class="hljs-tag">{
     <span class="hljs-symbol">totalCount</span>
   }</span></span>
 }
@@ -816,19 +796,17 @@ http://school.localhost/graphql
   <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;sortDirection&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;sortCriterion&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;levelId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;personalCoachId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;assignedCoachId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;reviewingCoachId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;targetId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;search&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;excludeSubmissionId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
   <span class="hljs-attr">&quot;includeInactive&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
 }
 </code></pre> </body>
                     </html>
                     <!-- </div> -->
-                    <a href="http://school.localhost/graphql?query=query%20submissions(%24after%3A%20String%2C%20%24before%3A%20String%2C%20%24first%3A%20Int%2C%20%24last%3A%20Int%2C%20%24courseId%3A%20ID!%2C%20%24status%3A%20SubmissionStatus%2C%20%24sortDirection%3A%20SortDirection!%2C%20%24sortCriterion%3A%20SubmissionSortCriterion!%2C%20%24levelId%3A%20ID%2C%20%24personalCoachId%3A%20ID%2C%20%24assignedCoachId%3A%20ID%2C%20%24reviewingCoachId%3A%20ID%2C%20%24targetId%3A%20ID%2C%20%24search%3A%20String%2C%20%24excludeSubmissionId%3A%20ID%2C%20%24includeInactive%3A%20Boolean)%7B%0A%20%20submissions(after%3A%20%24after%2C%20before%3A%20%24before%2C%20first%3A%20%24first%2C%20last%3A%20%24last%2C%20courseId%3A%20%24courseId%2C%20status%3A%20%24status%2C%20sortDirection%3A%20%24sortDirection%2C%20sortCriterion%3A%20%24sortCriterion%2C%20levelId%3A%20%24levelId%2C%20personalCoachId%3A%20%24personalCoachId%2C%20assignedCoachId%3A%20%24assignedCoachId%2C%20reviewingCoachId%3A%20%24reviewingCoachId%2C%20targetId%3A%20%24targetId%2C%20search%3A%20%24search%2C%20excludeSubmissionId%3A%20%24excludeSubmissionId%2C%20includeInactive%3A%20%24includeInactive)%7B%0A%20%20%20%20totalCount%0A%20%20%7D%0A%7D" target="_blank">Try it now</a>
+                    <a href="http://school.localhost/graphql?query=query%20submissions(%24after%3A%20String%2C%20%24before%3A%20String%2C%20%24first%3A%20Int%2C%20%24last%3A%20Int%2C%20%24courseId%3A%20ID!%2C%20%24status%3A%20SubmissionStatus%2C%20%24sortDirection%3A%20SortDirection!%2C%20%24sortCriterion%3A%20SubmissionSortCriterion!%2C%20%24personalCoachId%3A%20ID%2C%20%24assignedCoachId%3A%20ID%2C%20%24reviewingCoachId%3A%20ID%2C%20%24targetId%3A%20ID%2C%20%24search%3A%20String%2C%20%24includeInactive%3A%20Boolean)%7B%0A%20%20submissions(after%3A%20%24after%2C%20before%3A%20%24before%2C%20first%3A%20%24first%2C%20last%3A%20%24last%2C%20courseId%3A%20%24courseId%2C%20status%3A%20%24status%2C%20sortDirection%3A%20%24sortDirection%2C%20sortCriterion%3A%20%24sortCriterion%2C%20personalCoachId%3A%20%24personalCoachId%2C%20assignedCoachId%3A%20%24assignedCoachId%2C%20reviewingCoachId%3A%20%24reviewingCoachId%2C%20targetId%3A%20%24targetId%2C%20search%3A%20%24search%2C%20includeInactive%3A%20%24includeInactive)%7B%0A%20%20%20%20totalCount%0A%20%20%7D%0A%7D" target="_blank">Try it now</a>
                 </section>
               </div>
             </div>
@@ -1457,7 +1435,7 @@ http://school.localhost/graphql
                     <!-- <div class="hljs"> -->
                     <html>
                     <head></head>
-                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> createGrading<span class="hljs-tag">(<span class="hljs-code">$submissionId</span>: ID!, <span class="hljs-code">$grades</span>: <span class="hljs-type">[GradeInput!</span>]!, <span class="hljs-code">$feedback</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$checklist</span>: JSON!, <span class="hljs-code">$note</span>:<span class="hljs-type"> String)</span>{
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> createGrading<span class="hljs-tag">(<span class="hljs-code">$submissionId</span>: ID!, <span class="hljs-code">$grades</span>: <span class="hljs-type">[GradeInput!</span>], <span class="hljs-code">$feedback</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$checklist</span>: JSON!, <span class="hljs-code">$note</span>:<span class="hljs-type"> String)</span>{
   createGrading(submissionId: <span class="hljs-code">$submissionId</span>, grades: <span class="hljs-code">$grades</span>, feedback: <span class="hljs-code">$feedback</span>, checklist: <span class="hljs-code">$checklist</span>, note: <span class="hljs-code">$note</span>)</span><span class="hljs-tag">{
     <span class="hljs-symbol">success</span>
   }</span></span>
@@ -1483,7 +1461,7 @@ http://school.localhost/graphql
 </code></pre> </body>
                     </html>
                     <!-- </div> -->
-                    <a href="http://school.localhost/graphql?query=mutation%20createGrading(%24submissionId%3A%20ID!%2C%20%24grades%3A%20%5BGradeInput!%5D!%2C%20%24feedback%3A%20String%2C%20%24checklist%3A%20JSON!%2C%20%24note%3A%20String)%7B%0A%20%20createGrading(submissionId%3A%20%24submissionId%2C%20grades%3A%20%24grades%2C%20feedback%3A%20%24feedback%2C%20checklist%3A%20%24checklist%2C%20note%3A%20%24note)%7B%0A%20%20%20%20success%0A%20%20%7D%0A%7D" target="_blank">Try it now</a>
+                    <a href="http://school.localhost/graphql?query=mutation%20createGrading(%24submissionId%3A%20ID!%2C%20%24grades%3A%20%5BGradeInput!%5D%2C%20%24feedback%3A%20String%2C%20%24checklist%3A%20JSON!%2C%20%24note%3A%20String)%7B%0A%20%20createGrading(submissionId%3A%20%24submissionId%2C%20grades%3A%20%24grades%2C%20feedback%3A%20%24feedback%2C%20checklist%3A%20%24checklist%2C%20note%3A%20%24note)%7B%0A%20%20%20%20success%0A%20%20%7D%0A%7D" target="_blank">Try it now</a>
                 </section>
               </div>
             </div>
@@ -1525,6 +1503,140 @@ http://school.localhost/graphql
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;data&quot;</span>: {
     <span class="hljs-attr">&quot;createGrading&quot;</span>: {
+      <span class="hljs-attr">&quot;success&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <span id="path-submit_feedback_for_a_submission"></span>
+          <div id="operation-submit_feedback_for_a_submission-post" class="operation panel" data-traverse-target="operation-submit_feedback_for_a_submission-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Token-Authenticated">Token Authenticated</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Submit Feedback for a Submission</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>This creates a feedback entry for a student submission.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">submissionId:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">feedback:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> createFeedback<span class="hljs-tag">(<span class="hljs-code">$submissionId</span>: ID!, <span class="hljs-code">$feedback</span>:<span class="hljs-type"> String!</span>)</span><span class="hljs-tag">{
+  <span class="hljs-symbol">createFeedback<span class="hljs-tag">(submissionId: <span class="hljs-code">$submissionId</span>, feedback: <span class="hljs-code">$feedback</span>)</span><span class="hljs-tag">{
+    <span class="hljs-symbol">success</span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <h5>Variables</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;submissionId&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;feedback&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+}
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="http://school.localhost/graphql?query=mutation%20createFeedback(%24submissionId%3A%20ID!%2C%20%24feedback%3A%20String!)%7B%0A%20%20createFeedback(submissionId%3A%20%24submissionId%2C%20feedback%3A%20%24feedback)%7B%0A%20%20%20%20success%0A%20%20%7D%0A%7D" target="_blank">Try it now</a>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/CreateFeedbackPayload">CreateFeedbackPayload</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;createFeedback&quot;</span>: {
       <span class="hljs-attr">&quot;success&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
     }
   }
@@ -3141,36 +3253,6 @@ http://school.localhost/graphql
                 </section>
                 <section class="json-schema-properties">
                   <dl>
-                    <dt data-property-name="levelUpEligibility">
-                      <span class="json-property-name">levelUpEligibility:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/LevelUpEligibility">LevelUpEligibility</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
                     <dt data-property-name="submission">
                       <span class="json-property-name">submission:</span>
                       <div class="json-property-type">object</div>
@@ -3211,10 +3293,6 @@ http://school.localhost/graphql
                   <html>
                   <head></head>
                   <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">&quot;levelUpEligibility&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
   <span class="hljs-attr">&quot;submission&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: {
       <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
@@ -3314,7 +3392,11 @@ http://school.localhost/graphql
         <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
         <span class="hljs-attr">&quot;arguments&quot;</span>: {}
       },
-      <span class="hljs-attr">&quot;levelNumber&quot;</span>: {}
+      <span class="hljs-attr">&quot;levelNumber&quot;</span>: {
+        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+      },
+      <span class="hljs-attr">&quot;passedAt&quot;</span>: {}
     }
   }
 }
@@ -6455,41 +6537,11 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
-                    <dt data-property-name="progressionBehavior">
-                      <span class="json-property-name">progressionBehavior:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/ProgressionBehavior">ProgressionBehavior</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
                     <dt data-property-name="progressionLimit">
                       <span class="json-property-name">progressionLimit:</span>
                       <div class="json-property-type">object</div>
                       <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
                     </dt>
                     <dt class="json-inner-schema">
                       <section class="json-schema-properties">
@@ -7846,18 +7898,6 @@ http://school.localhost/graphql
                     <dt>
                       <div class="json-property-type">object</div>
                       <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">Level</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>Levels in the course</p>
-                      </section>
-                    </dd>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
                         <span class="json-property-enum-item">Cohort</span>
                       </span>
                       <span class="json-property-range" title="Value limits"></span>
@@ -9059,10 +9099,6 @@ http://school.localhost/graphql
       <span class="hljs-attr">&quot;name&quot;</span>: {
         <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
         <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-      },
-      <span class="hljs-attr">&quot;passGrade&quot;</span>: {
-        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
-        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
       }
     },
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
@@ -9450,36 +9486,6 @@ http://school.localhost/graphql
                 </section>
                 <section class="json-schema-properties">
                   <dl>
-                    <dt data-property-name="levelUpEligibility">
-                      <span class="json-property-name">levelUpEligibility:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/LevelUpEligibility">LevelUpEligibility</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
                     <dt data-property-name="submission">
                       <span class="json-property-name">submission:</span>
                       <div class="json-property-type">object</div>
@@ -9520,10 +9526,6 @@ http://school.localhost/graphql
                   <html>
                   <head></head>
                   <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">&quot;levelUpEligibility&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
   <span class="hljs-attr">&quot;submission&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: {
       <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
@@ -9623,7 +9625,11 @@ http://school.localhost/graphql
         <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
         <span class="hljs-attr">&quot;arguments&quot;</span>: {}
       },
-      <span class="hljs-attr">&quot;levelNumber&quot;</span>: {}
+      <span class="hljs-attr">&quot;levelNumber&quot;</span>: {
+        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+      },
+      <span class="hljs-attr">&quot;passedAt&quot;</span>: {}
     }
   }
 }
@@ -9971,36 +9977,6 @@ http://school.localhost/graphql
                 </section>
                 <section class="json-schema-properties">
                   <dl>
-                    <dt data-property-name="levelUpEligibility">
-                      <span class="json-property-name">levelUpEligibility:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/LevelUpEligibility">LevelUpEligibility</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
                     <dt data-property-name="submission">
                       <span class="json-property-name">submission:</span>
                       <div class="json-property-type">object</div>
@@ -10041,10 +10017,6 @@ http://school.localhost/graphql
                   <html>
                   <head></head>
                   <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">&quot;levelUpEligibility&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
   <span class="hljs-attr">&quot;submission&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: {
       <span class="hljs-attr">&quot;archivedAt&quot;</span>: {
@@ -10144,7 +10116,11 @@ http://school.localhost/graphql
         <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
         <span class="hljs-attr">&quot;arguments&quot;</span>: {}
       },
-      <span class="hljs-attr">&quot;levelNumber&quot;</span>: {}
+      <span class="hljs-attr">&quot;levelNumber&quot;</span>: {
+        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+      },
+      <span class="hljs-attr">&quot;passedAt&quot;</span>: {}
     }
   }
 }
@@ -11801,212 +11777,6 @@ http://school.localhost/graphql
               </div>
             </div>
           </div>
-          <div id="definition-DistributionInLevel" class="definition panel" data-traverse-target="definition-DistributionInLevel">
-            <h2 class="panel-title">
-              <a name="/definitions/DistributionInLevel"></a>DistributionInLevel: object
-              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
-              <span class="json-property-range" title="Value limits"></span>
-              
-              
-              </span> -->
-            </h2>
-            <div class="doc-row">
-              <div class="doc-copy">
-                <section class="json-schema-properties">
-                  <dl>
-                    <dt data-property-name="filterName">
-                      <span class="json-property-name">filterName:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/String">String</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
-                    <dt data-property-name="id">
-                      <span class="json-property-name">id:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/ID">ID</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
-                    <dt data-property-name="number">
-                      <span class="json-property-name">number:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/Int">Int</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
-                    <dt data-property-name="studentsInLevel">
-                      <span class="json-property-name">studentsInLevel:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/Int">Int</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
-                    <dt data-property-name="unlocked">
-                      <span class="json-property-name">unlocked:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/Boolean">Boolean</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
-                  </dl>
-                </section>
-              </div>
-              <div class="doc-examples">
-                <section>
-                  <h5>Example</h5>
-                  <!-- <div class="hljs"> -->
-                  <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">&quot;filterName&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
-  <span class="hljs-attr">&quot;id&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
-  <span class="hljs-attr">&quot;number&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
-  <span class="hljs-attr">&quot;studentsInLevel&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
-  <span class="hljs-attr">&quot;unlocked&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  }
-}
-</code></pre> </body>
-                  </html>
-                  <!-- </div> -->
-                </section>
-              </div>
-            </div>
-          </div>
           <div id="definition-DropoutStudentPayload" class="definition panel" data-traverse-target="definition-DropoutStudentPayload">
             <h2 class="panel-title">
               <a name="/definitions/DropoutStudentPayload"></a>DropoutStudentPayload: object
@@ -12424,37 +12194,6 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
-                    <dt data-property-name="passGrade">
-                      <span class="json-property-name">passGrade:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/Int">Int</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
                   </dl>
                 </section>
               </div>
@@ -12490,10 +12229,6 @@ http://school.localhost/graphql
   },
   <span class="hljs-attr">&quot;name&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  },
-  <span class="hljs-attr">&quot;passGrade&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   }
 }
@@ -13578,6 +13313,75 @@ http://school.localhost/graphql
               </div>
             </div>
           </div>
+          <div id="definition-InitiatePasswordResetPayload" class="definition panel" data-traverse-target="definition-InitiatePasswordResetPayload">
+            <h2 class="panel-title">
+              <a name="/definitions/InitiatePasswordResetPayload"></a>InitiatePasswordResetPayload: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-description">
+                  <p>Autogenerated return type of InitiatePasswordReset.</p>
+                </section>
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="success">
+                      <span class="json-property-name">success:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/Boolean">Boolean</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;success&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
           <div id="definition-Int" class="definition panel" data-traverse-target="definition-Int">
             <h2 class="panel-title">
               <a name="/definitions/Int"></a>Int: number
@@ -14407,177 +14211,6 @@ http://school.localhost/graphql
               </div>
             </div>
           </div>
-          <div id="definition-LevelUpEligibility" class="definition panel" data-traverse-target="definition-LevelUpEligibility">
-            <h2 class="panel-title">
-              <a name="/definitions/LevelUpEligibility"></a>LevelUpEligibility: string
-              <!-- <span class="json-property-type"><div class="json-property-type"></div>
-              <span class="json-property-range" title="Value limits"></span>
-              
-              
-              </span> -->
-            </h2>
-            <div class="doc-row">
-              <div class="doc-copy">
-                <section class="json-schema-anyOf">
-                  <dl>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">Eligible</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>This student is eligible to level up</p>
-                      </section>
-                    </dd>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">AtMaxLevel</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>This student is already at the max level</p>
-                      </section>
-                    </dd>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">NoMilestonesInLevel</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>There are no milestone targets in the student&#39;s level</p>
-                      </section>
-                    </dd>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">CurrentLevelIncomplete</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>This student has not done the required work in the current level</p>
-                      </section>
-                    </dd>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">PreviousLevelIncomplete</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>This student has incomplete targets in a previous level</p>
-                      </section>
-                    </dd>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">TeamMembersPending</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>This student&#39;s team-mates have not done the required work for leveling up</p>
-                      </section>
-                    </dd>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">DateLocked</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>The next level is yet to be unlocked</p>
-                      </section>
-                    </dd>
-                  </dl>
-                </section>
-              </div>
-            </div>
-          </div>
-          <div id="definition-LevelUpPayload" class="definition panel" data-traverse-target="definition-LevelUpPayload">
-            <h2 class="panel-title">
-              <a name="/definitions/LevelUpPayload"></a>LevelUpPayload: object
-              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
-              <span class="json-property-range" title="Value limits"></span>
-              
-              
-              </span> -->
-            </h2>
-            <div class="doc-row">
-              <div class="doc-copy">
-                <section class="json-schema-description">
-                  <p>Autogenerated return type of LevelUp.</p>
-                </section>
-                <section class="json-schema-properties">
-                  <dl>
-                    <dt data-property-name="success">
-                      <span class="json-property-name">success:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/Boolean">Boolean</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
-                  </dl>
-                </section>
-              </div>
-              <div class="doc-examples">
-                <section>
-                  <h5>Example</h5>
-                  <!-- <div class="hljs"> -->
-                  <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">&quot;success&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-  }
-}
-</code></pre> </body>
-                  </html>
-                  <!-- </div> -->
-                </section>
-              </div>
-            </div>
-          </div>
           <div id="definition-LockTopicPayload" class="definition panel" data-traverse-target="definition-LockTopicPayload">
             <h2 class="panel-title">
               <a name="/definitions/LockTopicPayload"></a>LockTopicPayload: object
@@ -15048,6 +14681,177 @@ http://school.localhost/graphql
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;success&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-MilestoneTargetsCompletionStatus" class="definition panel" data-traverse-target="definition-MilestoneTargetsCompletionStatus">
+            <h2 class="panel-title">
+              <a name="/definitions/MilestoneTargetsCompletionStatus"></a>MilestoneTargetsCompletionStatus: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="completed">
+                      <span class="json-property-name">completed:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/Boolean">Boolean</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
+                    <dt data-property-name="id">
+                      <span class="json-property-name">id:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/ID">ID</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
+                    <dt data-property-name="milestoneNumber">
+                      <span class="json-property-name">milestoneNumber:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/Int">Int</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
+                    <dt data-property-name="title">
+                      <span class="json-property-name">title:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/String">String</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;completed&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+  },
+  <span class="hljs-attr">&quot;id&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+  },
+  <span class="hljs-attr">&quot;milestoneNumber&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+  },
+  <span class="hljs-attr">&quot;title&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   }
 }
@@ -16309,60 +16113,6 @@ http://school.localhost/graphql
 </code></pre> </body>
                   </html>
                   <!-- </div> -->
-                </section>
-              </div>
-            </div>
-          </div>
-          <div id="definition-ProgressionBehavior" class="definition panel" data-traverse-target="definition-ProgressionBehavior">
-            <h2 class="panel-title">
-              <a name="/definitions/ProgressionBehavior"></a>ProgressionBehavior: string
-              <!-- <span class="json-property-type"><div class="json-property-type"></div>
-              <span class="json-property-range" title="Value limits"></span>
-              
-              
-              </span> -->
-            </h2>
-            <div class="doc-row">
-              <div class="doc-copy">
-                <section class="json-schema-anyOf">
-                  <dl>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">Limited</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>Allow students to level up a limited number of times</p>
-                      </section>
-                    </dd>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">Unlimited</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>Allow students to level up without getting submissions reviewed</p>
-                      </section>
-                    </dd>
-                    <dt>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-enum" title="Possible values">
-                        <span class="json-property-enum-item">Strict</span>
-                      </span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dd>
-                      <section class="json-schema-description">
-                        <p>Allow students to level up only after getting submissions reviewed</p>
-                      </section>
-                    </dd>
-                  </dl>
                 </section>
               </div>
             </div>
@@ -18134,37 +17884,6 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
-                    <dt data-property-name="level">
-                      <span class="json-property-name">level:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/Level">Level</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
                     <dt data-property-name="personalCoaches">
                       <span class="json-property-name">personalCoaches:</span>
                       <div class="json-property-type">object</div>
@@ -18716,8 +18435,8 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
-                    <dt data-property-name="completedLevelIds">
-                      <span class="json-property-name">completedLevelIds:</span>
+                    <dt data-property-name="canModifyCoachNotes">
+                      <span class="json-property-name">canModifyCoachNotes:</span>
                       <div class="json-property-type">object</div>
                       <span class="json-property-range" title="Value limits"></span>
                       <span class="json-property-required"></span>
@@ -18728,8 +18447,8 @@ http://school.localhost/graphql
                           <dt data-property-name="return">
                             <span class="json-property-name">return:</span>
                             <div class="json-property-type">
-                              <div class="json-schema-ref-array">
-                                <a class="json-schema-ref" href="#/definitions/ID">ID</a>
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/Boolean">Boolean</a>
                               </div>
                             </div>
                             <span class="json-property-range" title="Value limits"></span>
@@ -18792,6 +18511,37 @@ http://school.localhost/graphql
                             <div class="json-property-type">
                               <div class="json-schema-ref-array">
                                 <a class="json-schema-ref" href="#/definitions/EvaluationCriterion">EvaluationCriterion</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
+                    <dt data-property-name="milestoneTargetsCompletionStatus">
+                      <span class="json-property-name">milestoneTargetsCompletionStatus:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="json-schema-ref-array">
+                                <a class="json-schema-ref" href="#/definitions/MilestoneTargetsCompletionStatus">MilestoneTargetsCompletionStatus</a>
                               </div>
                             </div>
                             <span class="json-property-range" title="Value limits"></span>
@@ -19019,10 +18769,8 @@ http://school.localhost/graphql
     ],
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   },
-  <span class="hljs-attr">&quot;completedLevelIds&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: [
-      <span class="hljs-string">&quot;object&quot;</span>
-    ],
+  <span class="hljs-attr">&quot;canModifyCoachNotes&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   },
   <span class="hljs-attr">&quot;email&quot;</span>: {
@@ -19058,9 +18806,28 @@ http://school.localhost/graphql
         <span class="hljs-attr">&quot;name&quot;</span>: {
           <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
           <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+        }
+      }
+    ],
+    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+  },
+  <span class="hljs-attr">&quot;milestoneTargetsCompletionStatus&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;completed&quot;</span>: {
+          <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+          <span class="hljs-attr">&quot;arguments&quot;</span>: {}
         },
-        <span class="hljs-attr">&quot;passGrade&quot;</span>: {
+        <span class="hljs-attr">&quot;id&quot;</span>: {
+          <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+          <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+        },
+        <span class="hljs-attr">&quot;milestoneNumber&quot;</span>: {
           <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+          <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+        },
+        <span class="hljs-attr">&quot;title&quot;</span>: {
+          <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
           <span class="hljs-attr">&quot;arguments&quot;</span>: {}
         }
       }
@@ -19091,25 +18858,7 @@ http://school.localhost/graphql
                 <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
                 <span class="hljs-attr">&quot;arguments&quot;</span>: {}
               },
-              <span class="hljs-attr">&quot;certificates&quot;</span>: {
-                <span class="hljs-attr">&quot;return&quot;</span>: [
-                  {
-                    <span class="hljs-attr">&quot;active&quot;</span>: {
-                      <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
-                      <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-                    },
-                    <span class="hljs-attr">&quot;course&quot;</span>: {
-                      <span class="hljs-attr">&quot;return&quot;</span>: {
-                        <span class="hljs-attr">&quot;about&quot;</span>: {
-                          <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-                          <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-                        },
-                        <span class="hljs-attr">&quot;archivedAt&quot;</span>: {}
-                      }
-                    }
-                  }
-                ]
-              }
+              <span class="hljs-attr">&quot;certificates&quot;</span>: {}
             }
           }
         }
@@ -19640,11 +19389,10 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
-                    <dt data-property-name="levelId">
-                      <span class="json-property-name">levelId:</span>
+                    <dt data-property-name="milestoneNumber">
+                      <span class="json-property-name">milestoneNumber:</span>
                       <div class="json-property-type">object</div>
                       <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
                     </dt>
                     <dt class="json-inner-schema">
                       <section class="json-schema-properties">
@@ -19653,7 +19401,7 @@ http://school.localhost/graphql
                             <span class="json-property-name">return:</span>
                             <div class="json-property-type">
                               <div class="">
-                                <a class="json-schema-ref" href="#/definitions/ID">ID</a>
+                                <a class="json-schema-ref" href="#/definitions/Int">Int</a>
                               </div>
                             </div>
                             <span class="json-property-range" title="Value limits"></span>
@@ -19847,8 +19595,8 @@ http://school.localhost/graphql
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   },
-  <span class="hljs-attr">&quot;levelId&quot;</span>: {
-    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+  <span class="hljs-attr">&quot;milestoneNumber&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   },
   <span class="hljs-attr">&quot;passedAt&quot;</span>: {
@@ -20060,8 +19808,8 @@ http://school.localhost/graphql
               <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
               <span class="hljs-attr">&quot;arguments&quot;</span>: {}
             },
-            <span class="hljs-attr">&quot;levelId&quot;</span>: {
-              <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-attr">&quot;milestoneNumber&quot;</span>: {
+              <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
               <span class="hljs-attr">&quot;arguments&quot;</span>: {}
             },
             <span class="hljs-attr">&quot;passedAt&quot;</span>: {
@@ -20108,8 +19856,8 @@ http://school.localhost/graphql
           <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
           <span class="hljs-attr">&quot;arguments&quot;</span>: {}
         },
-        <span class="hljs-attr">&quot;levelId&quot;</span>: {
-          <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+        <span class="hljs-attr">&quot;milestoneNumber&quot;</span>: {
+          <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
           <span class="hljs-attr">&quot;arguments&quot;</span>: {}
         },
         <span class="hljs-attr">&quot;passedAt&quot;</span>: {
@@ -20265,8 +20013,8 @@ http://school.localhost/graphql
         <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
         <span class="hljs-attr">&quot;arguments&quot;</span>: {}
       },
-      <span class="hljs-attr">&quot;levelId&quot;</span>: {
-        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;milestoneNumber&quot;</span>: {
+        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
         <span class="hljs-attr">&quot;arguments&quot;</span>: {}
       },
       <span class="hljs-attr">&quot;passedAt&quot;</span>: {
@@ -21128,161 +20876,6 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
-                    <dt data-property-name="inactiveStudents">
-                      <span class="json-property-name">inactiveStudents:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/Boolean">Boolean</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
-                    <dt data-property-name="inactiveSubmissionReviewAllowedDays">
-                      <span class="json-property-name">inactiveSubmissionReviewAllowedDays:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/Int">Int</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
-                    <dt data-property-name="levelId">
-                      <span class="json-property-name">levelId:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/ID">ID</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
-                    <dt data-property-name="levelNumber">
-                      <span class="json-property-name">levelNumber:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/String">String</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
-                    <dt data-property-name="preview">
-                      <span class="json-property-name">preview:</span>
-                      <div class="json-property-type">object</div>
-                      <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
-                    </dt>
-                    <dt class="json-inner-schema">
-                      <section class="json-schema-properties">
-                        <dl>
-                          <dt data-property-name="return">
-                            <span class="json-property-name">return:</span>
-                            <div class="json-property-type">
-                              <div class="">
-                                <a class="json-schema-ref" href="#/definitions/Boolean">Boolean</a>
-                              </div>
-                            </div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt data-property-name="arguments">
-                            <span class="json-property-name">arguments:</span>
-                            <div class="json-property-type">object</div>
-                            <span class="json-property-range" title="Value limits"></span>
-                          </dt>
-                          <dt class="json-inner-schema">
-                            <section class="json-schema-properties">
-                              <dl> </dl>
-                            </section>
-                          </dt>
-                        </dl>
-                      </section>
-                    </dt>
                     <dt data-property-name="reviewChecklist">
                       <span class="json-property-name">reviewChecklist:</span>
                       <div class="json-property-type">object</div>
@@ -21297,6 +20890,37 @@ http://school.localhost/graphql
                             <div class="json-property-type">
                               <div class="json-schema-ref-array">
                                 <a class="json-schema-ref" href="#/definitions/ReviewChecklist">ReviewChecklist</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
+                    <dt data-property-name="reviewable">
+                      <span class="json-property-name">reviewable:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/Boolean">Boolean</a>
                               </div>
                             </div>
                             <span class="json-property-range" title="Value limits"></span>
@@ -21591,6 +21215,36 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
+                    <dt data-property-name="warning">
+                      <span class="json-property-name">warning:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/String">String</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
                   </dl>
                 </section>
               </div>
@@ -21624,7 +21278,7 @@ http://school.localhost/graphql
           <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
           <span class="hljs-attr">&quot;arguments&quot;</span>: {}
         },
-        <span class="hljs-attr">&quot;levelNumber&quot;</span>: {
+        <span class="hljs-attr">&quot;milestoneNumber&quot;</span>: {
           <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
           <span class="hljs-attr">&quot;arguments&quot;</span>: {}
         },
@@ -22256,11 +21910,10 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
-                    <dt data-property-name="levelNumber">
-                      <span class="json-property-name">levelNumber:</span>
+                    <dt data-property-name="milestoneNumber">
+                      <span class="json-property-name">milestoneNumber:</span>
                       <div class="json-property-type">object</div>
                       <span class="json-property-range" title="Value limits"></span>
-                      <span class="json-property-required"></span>
                     </dt>
                     <dt class="json-inner-schema">
                       <section class="json-schema-properties">
@@ -22469,7 +22122,7 @@ http://school.localhost/graphql
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   },
-  <span class="hljs-attr">&quot;levelNumber&quot;</span>: {
+  <span class="hljs-attr">&quot;milestoneNumber&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   },
@@ -22697,7 +22350,7 @@ http://school.localhost/graphql
               <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
               <span class="hljs-attr">&quot;arguments&quot;</span>: {}
             },
-            <span class="hljs-attr">&quot;levelNumber&quot;</span>: {
+            <span class="hljs-attr">&quot;milestoneNumber&quot;</span>: {
               <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
               <span class="hljs-attr">&quot;arguments&quot;</span>: {}
             },
@@ -22760,7 +22413,7 @@ http://school.localhost/graphql
           <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
           <span class="hljs-attr">&quot;arguments&quot;</span>: {}
         },
-        <span class="hljs-attr">&quot;levelNumber&quot;</span>: {
+        <span class="hljs-attr">&quot;milestoneNumber&quot;</span>: {
           <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
           <span class="hljs-attr">&quot;arguments&quot;</span>: {}
         },
@@ -22899,7 +22552,7 @@ http://school.localhost/graphql
         <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
         <span class="hljs-attr">&quot;arguments&quot;</span>: {}
       },
-      <span class="hljs-attr">&quot;levelNumber&quot;</span>: {
+      <span class="hljs-attr">&quot;milestoneNumber&quot;</span>: {
         <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
         <span class="hljs-attr">&quot;arguments&quot;</span>: {}
       },
@@ -23635,6 +23288,37 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
+                    <dt data-property-name="milestone">
+                      <span class="json-property-name">milestone:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/Boolean">Boolean</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
                     <dt data-property-name="prerequisiteTargets">
                       <span class="json-property-name">prerequisiteTargets:</span>
                       <div class="json-property-type">object</div>
@@ -23849,6 +23533,10 @@ http://school.localhost/graphql
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   },
+  <span class="hljs-attr">&quot;milestone&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+  },
   <span class="hljs-attr">&quot;prerequisiteTargets&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: [
       <span class="hljs-string">&quot;object&quot;</span>
@@ -23961,6 +23649,36 @@ http://school.localhost/graphql
                         </dl>
                       </section>
                     </dt>
+                    <dt data-property-name="milestoneNumber">
+                      <span class="json-property-name">milestoneNumber:</span>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt class="json-inner-schema">
+                      <section class="json-schema-properties">
+                        <dl>
+                          <dt data-property-name="return">
+                            <span class="json-property-name">return:</span>
+                            <div class="json-property-type">
+                              <div class="">
+                                <a class="json-schema-ref" href="#/definitions/Int">Int</a>
+                              </div>
+                            </div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt data-property-name="arguments">
+                            <span class="json-property-name">arguments:</span>
+                            <div class="json-property-type">object</div>
+                            <span class="json-property-range" title="Value limits"></span>
+                          </dt>
+                          <dt class="json-inner-schema">
+                            <section class="json-schema-properties">
+                              <dl> </dl>
+                            </section>
+                          </dt>
+                        </dl>
+                      </section>
+                    </dt>
                     <dt data-property-name="title">
                       <span class="json-property-name">title:</span>
                       <div class="json-property-type">object</div>
@@ -24004,6 +23722,10 @@ http://school.localhost/graphql
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;id&quot;</span>: {
     <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+    <span class="hljs-attr">&quot;arguments&quot;</span>: {}
+  },
+  <span class="hljs-attr">&quot;milestoneNumber&quot;</span>: {
+    <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
     <span class="hljs-attr">&quot;arguments&quot;</span>: {}
   },
   <span class="hljs-attr">&quot;title&quot;</span>: {
@@ -27593,10 +27315,6 @@ http://school.localhost/graphql
       },
       <span class="hljs-attr">&quot;name&quot;</span>: {
         <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-        <span class="hljs-attr">&quot;arguments&quot;</span>: {}
-      },
-      <span class="hljs-attr">&quot;passGrade&quot;</span>: {
-        <span class="hljs-attr">&quot;return&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
         <span class="hljs-attr">&quot;arguments&quot;</span>: {}
       }
     },

@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "dociql": "^1.1.3"
+    "dociql": "^1.1.7"
   },
   "scripts": {
     "build": "dociql -t docs -l logo.svg config.yml"

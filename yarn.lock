@@ -668,7 +668,7 @@ detect-file@^1.0.0:
   resolved "https://registry.yarnpkg.com/detect-file/-/detect-file-1.0.0.tgz#f0d66d03672a825cb1b73bdb3fe62310c8e552b7"
   integrity sha1-8NZtA2cqglyxtzvbP+YjEMjlUrc=
 
-dociql@^1.1.3:
+dociql@^1.1.7:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/dociql/-/dociql-1.1.7.tgz#86435d9df33623c755e0eb7d3633b5e35025e997"
   integrity sha512-V6UXlM4h6MjWwLqf8gK7dnLOACayrGXpa5f+jyFeTr695zxNxcKBC2F6xjWa0lHEuLni31OfNPREsAuCOmQQYw==

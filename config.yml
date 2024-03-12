@@ -44,3 +44,12 @@ domains:
       - name: Conclude Submission Report
         description: Submit a report for a submission and conclude it.
         query: mutation.concludeSubmissionReport
+      - name: Create Standing Log Entry
+        description: Create a standing log entry for a user.
+        query: mutation.createUserStanding
+      - name: Load Standing Log Entries
+        description: Load standing log entries for a user.
+        query: query.userStandings
+      - name: Archive Standing Log Entry
+        description: Archive a standing log entry for a user.
+        query: mutation.archiveUserStanding
